@@ -1,0 +1,2 @@
+#!/bin/nash
+tr -d 'cC'
