@@ -1,12 +1,6 @@
-#!/usr/bin/python3
-class { 'python':
-  version    => '3',
-  pip        => 'present',
-  manage_gunicorn => false,
-  dev        => true,
-}
-
-python::pip { 'Flask':
-  ensure   => '2.1.0',
-  pip_provider => 'pip3',
+# install flask from pip3
+exec { 'install_flask':
+  command => '/usr/bin/pip3 install Flask==2.1.0',
+  path    => ['/bin', '/usr/bin'],
+  unless  => '/usr/bin/pip3 show Flask | grep Version | grep 2.1.0',
 }
